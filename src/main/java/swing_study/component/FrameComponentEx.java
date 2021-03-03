@@ -37,8 +37,8 @@ public class FrameComponentEx extends JFrame implements ActionListener {
 		contentPane.add(btn);
 
 		btn2 = new JButton("Disabled Button");
-		btn2.addActionListener(this);
 		btn2.setEnabled(false);
+		btn2.addActionListener(this);
 		contentPane.add(btn2);
 
 		btn3 = new JButton("getX(),getY()");
