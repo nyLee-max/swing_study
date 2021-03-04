@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,7 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import swing_study.component.FrameComponentEx;
+import swing_study.component.Fruit;
 import swing_study.component.JButtonEx;
+import swing_study.component.JCheckBoxCustomEx;
+import swing_study.component.JCheckBoxEx;
 import swing_study.component.JLabelEx;
 import swing_study.frame.ContentPaneEx;
 import swing_study.frame.JPannelEx;
@@ -38,6 +42,8 @@ public class SwingMain extends JFrame implements ActionListener {
 	private JButton btn04;
 	private JButton btn05;
 	private JPanel panel;
+	private JButton btn06;
+	private JButton btn07;
 
 	/**
 	 * Launch the application.
@@ -121,9 +127,20 @@ public class SwingMain extends JFrame implements ActionListener {
 		panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "JcheckBox & JRadioButton", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(panel);
+		
+		btn06 = new JButton("JCheckBox");
+		btn06.addActionListener(this);
+		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		panel.add(btn06);
+		
+		btn07 = new JButton("JRadioButton");
+		panel.add(btn07);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn06) {
+			actionPerformedBtn06(e);
+		}
 		if (e.getSource() == btn05) {
 			actionPerformedBtn05(e);
 		}
@@ -189,5 +206,21 @@ public class SwingMain extends JFrame implements ActionListener {
 	protected void actionPerformedBtn05(ActionEvent e) {
 		JButtonEx frame = new JButtonEx();
 		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn06(ActionEvent e) {
+		JCheckBoxEx frame = new JCheckBoxEx();
+		frame.setVisible(true);
+		
+		ArrayList<Fruit> list = new ArrayList<Fruit>();
+		list.add(new Fruit("사과", 100));
+		list.add(new Fruit("배", 500));	
+		list.add(new Fruit("바나나", 1000));
+		list.add(new Fruit("체리", 2000));
+
+		
+		
+		
+		JCheckBoxCustomEx frame1 = new JCheckBoxCustomEx(list);
+		frame1.setVisible(true);
 	}
 }
